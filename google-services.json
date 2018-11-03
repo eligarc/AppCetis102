@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "683012508532",
+    "firebase_url": "https://cetis102-94792.firebaseio.com",
+    "project_id": "cetis102-94792",
+    "storage_bucket": "cetis102-94792.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:683012508532:android:a1565b4c62f44366",
+        "android_client_info": {
+          "package_name": "io.ionic.cetis102"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "683012508532-7re7fanohob9t4jl5iu05giu7lqq8ne3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGayFdplOkL6v5kPBhJFL1zRiQt00_CHY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

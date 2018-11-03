@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar color="cetis-color">
+    <button ion-button menuToggle>
+     <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>CETis No. 102</ion-title>
+  </ion-navbar>    
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Usuario</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="userData.usuario"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating>Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="userData.contrasenia"></ion-input>
+    </ion-item>
+  
+    <button ion-button block color="primary" (click)="login()">Iniciar sesión</button>
+  
+  </ion-list>
+  
+  </ion-content>

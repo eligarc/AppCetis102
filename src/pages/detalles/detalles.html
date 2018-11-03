@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar color="cetis-color">
+    <button ion-button menuToggle>
+     <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{film.titulo}}</ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content padding>
+  
+  <ion-thumbnail item-start>
+      <img src="{{film.url_image}}">
+  </ion-thumbnail>
+  
+  <ion-card>
+      <ion-card-content>
+        <h2>{{film.titulo}}</h2>
+      </ion-card-content>
+    <ion-card-content>
+      <h4>Fecha de evento</h4>
+      {{ film.fecha }}
+    </ion-card-content>
+    <ion-card-content>
+      {{ film.descripcion }}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-footer >
+  <ion-toolbar color="cetis-color">
+  </ion-toolbar>
+</ion-footer>

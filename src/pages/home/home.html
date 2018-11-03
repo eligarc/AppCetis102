@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar color="cetis-color">
+    <button ion-button menuToggle>
+     <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>CETis No. 102</ion-title>
+  </ion-navbar>
+
+    <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="Eventos">
+        Eventos
+      </ion-segment-button>
+      <ion-segment-button value="Avisos">
+        Avisos
+      </ion-segment-button>
+      <ion-segment-button value="Galeria">
+        Galeria
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Deslizar para refrescar"
+      refreshingSpinner="circles"
+      refreshingText="Refrescando...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+ <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'Eventos'">
+      <ion-item>
+       <button ion-item  *ngFor="let film of (films | async)" (click)="openDetails(film);">
+       <ion-thumbnail item-start>
+       <img src="{{film.url_image}}">
+       </ion-thumbnail>
+       <h2>{{ film.titulo }} </h2>
+       <p>{{film.fecha}}</p>
+      </button>
+      </ion-item>
+    </ion-list>
+    
+    <ion-list *ngSwitchCase="'Avisos'" class="cards-bg">
+        <ion-card>
+
+      <button ion-item *ngFor="let aviso of (avisos | async)" (click)="whatsappShare()">
+        <img src="{{aviso.url_image}}">
+        <ion-card-content>
+            
+            <p>{{ aviso.titulo }}</p>
+
+            <ion-icon name='share-alt'></ion-icon>
+            Compartir
+
+      </ion-card-content>
+
+       
+       </button>
+
+       
+      </ion-card>
+    
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'Galeria'">
+      <ion-card class="card-background-page"> 
+      <button item *ngFor="let film of (galeria | async)">
+          <img src="{{film.src}}">
+      </button>
+    </ion-card>
+    </ion-list>
+  </div> 
+</ion-content>
+

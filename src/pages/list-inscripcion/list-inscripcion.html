@@ -1,0 +1,30 @@
+<!--
+  Generated template for the ListInscripcionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="cetis-color">
+    <button ion-button menuToggle>
+     <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>CETis No. 102</ion-title>
+  </ion-navbar>    
+</ion-header>
+
+<ion-content padding>
+  <ion-list *ngFor="let producto of productos">
+    <ion-item-sliding>
+      <ion-item>
+       <h1>{{producto.name}}</h1>
+       <p>{{producto.price}}</p>
+      </ion-item>
+      <ion-item-options side="left">
+          <button ion-button color ="primary"  (click)="EditarProducto(producto)" >
+            Editar
+          </button>
+      </ion-item-options>
+    </ion-item-sliding>
+ </ion-list>
+</ion-content>

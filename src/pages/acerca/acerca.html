@@ -1,0 +1,35 @@
+<!--
+  Generated template for the AcercaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
+  <div class="flb">
+    <div class="Aligner-item Aligner-item--top"></div>
+    <img src="assets/img.svg">
+    <div class="Aligner-item Aligner-item--bottom"></div>
+  </div>
+</div>
+<ion-header>
+   
+  <ion-navbar color="cetis-color">
+    <button ion-button menuToggle>
+     <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Acerca de </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <img src="assets/img/dgeti.jpg" alt="">
+     
+  <button ion-button color="secondary" block (click)="showAlert()"> <ion-icon name="information-circle"> Presiona Aqui.. </ion-icon>  </button>
+</ion-content>
+
+<ion-footer >
+    <ion-toolbar color="cetis-color">
+    </ion-toolbar>
+  </ion-footer>

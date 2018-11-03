@@ -1,0 +1,89 @@
+<!--
+  Generated template for the ReinscripcionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <meta charset="utf-8">
+  <ion-navbar color="cetis-color">
+    <button ion-button menuToggle>
+     <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>CETis No. 102</ion-title>
+  </ion-navbar>    
+
+</ion-header>
+
+<ion-content padding class="encabezado">
+  <h5>CENTRO DE ESTUDIOS TECNOLÓGICOS INDUSTRIAL Y DE SERVICIOS No. 102 </h5>
+  <h6>"Porfirio Díaz"</h6>
+  <h4>SOLICITUD DE REINSCRIPCIÓN</h4>
+
+  <form #f="ngForm"  (ngSubmit)="envioDato(f)" novalidate >
+    <ion-list>
+      <ion-item>
+            <ion-label floating>Nombre de Director del Plantel</ion-label>
+            <ion-input type="text" name="NomDirector" [(ngModel)]="miModelo.NomDirector"  ngModel #NomDirector="ngModel" required maxlength="30"></ion-input>
+      </ion-item>
+      <div class="form-error" *ngIf="NomDirector.errors && (NomDirector.dirty || NomDirector.touched)">
+        <p color="danger" [hidden]="!NomDirector.errors.required">Nombre del director requerido</p>
+     </div> 
+      <ion-item>
+        <ion-label floating>Nombre del Alumno</ion-label>
+        <ion-input type="text" name="nomAlumno" [(ngModel)]="miModelo.nomAlumno" ngModel #nomAlumno="ngModel" required maxlength="45"></ion-input>
+      </ion-item>
+      <div class="form-error" *ngIf="nomAlumno.errors && (nomAlumno.dirty || nomAlumno.touched)">
+        <p color="danger" [hidden]="!nomAlumno.errors.required">Nombre del alummno requerido</p>
+      </div>
+      <ion-item>
+        <ion-label floating>Semestre cursado por el Alumno</ion-label>
+        <ion-input type="text" name="semestre" [(ngModel)]="miModelo.semestre" ngModel #semestre="ngModel" required maxlength="30"></ion-input>
+      </ion-item>
+      <div class="form-error" *ngIf="semestre.errors && (semestre.dirty || semestre.touched)">
+        <p color="danger" [hidden]="!semestre.errors.required">Semestre cursado requerido</p>
+      </div>
+      <ion-item>
+        <ion-label floating>Grupo que pertenecio</ion-label>
+        <ion-input type="text" name="grupo" [(ngModel)]="miModelo.grupo"  ngModel #grupo="ngModel" required maxlength="30"></ion-input>
+      </ion-item>
+      <div class="form-error" *ngIf="grupo.errors && (grupo.dirty || grupo.touched)">
+        <p color="danger" [hidden]="!grupo.errors.required">Grupo que pertenecio requerido</p>
+      </div>
+      <ion-item>
+        <ion-label>Especialidad</ion-label>
+        <ion-select name="especialidad" required  ngModel #especialidad="ngModel" required>
+          <ion-option value="Ventas" required>Ventas</ion-option>
+          <ion-option value="Ofimática" required>Ofimática</ion-option>
+          <ion-option value="Logística" required>Logística</ion-option>
+          <ion-option value="Trabajo Social" required>Trabajo Social</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Matrícula</ion-label>
+        <ion-input type="text" name="matricula"  [(ngModel)]="miModelo.matricula"  ngModel #matricula="ngModel" required maxlength="30"></ion-input>
+      </ion-item>
+      <div class="form-error" *ngIf="matricula.errors && (matricula.dirty || matricula.touched)">
+        <p color="danger" [hidden]="!matricula.errors.required">Matricula requerido</p>
+      </div>
+      <ion-item>
+        <ion-label floating>Semestre que solicita</ion-label>
+        <ion-input type="text" name="semsol"  [(ngModel)]="miModelo.semsol"    ngModel #semsol="ngModel" required maxlength="30"></ion-input>
+      </ion-item>
+      <div class="form-error" *ngIf="semsol.errors && (semsol.dirty || semsol.touched)">
+        <p color="danger" [hidden]="!semsol.errors.required">Semestre que solicita requerido</p>
+      </div>
+
+      <ion-item>
+        <button ion-button full block color = "secondary" round > Enviar Datos</button>
+        </ion-item>  
+    </ion-list>      
+   
+  </form>
+
+</ion-content>
+
+<ion-footer >
+    <ion-toolbar color="cetis-color">
+    </ion-toolbar>
+  </ion-footer>

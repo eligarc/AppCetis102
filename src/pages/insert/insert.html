@@ -1,0 +1,297 @@
+<ion-header>
+      <meta charset="utf-8">
+      <ion-navbar color="cetis-color">
+        <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>CETis No. 102</ion-title>
+      </ion-navbar>    
+
+</ion-header>
+
+<ion-content padding class="encabezado">
+      <h5>CENTRO DE ESTUDIOS TECNOLÓGICOS INDUSTRIAL Y DE SERVICIOS No. 102 </h5>
+      <h6>"Porfirio Díaz"</h6>
+      <h4>SOLICITUD DE INSCRIPCIÓN</h4>
+
+      <form #f="ngForm"  (ngSubmit)="envioDato(f)" novalidate >
+            <ion-list>
+                  <ion-item>
+                        <ion-label floating>Apellido(s)</ion-label>
+                        <ion-input type="text" name="name" [(ngModel)]="miModelo.name" ngModel #name="ngModel" required maxlength="45"></ion-input>
+                  </ion-item>
+                  <div class="form-error" *ngIf="name.errors && (name.dirty || name.touched)">
+                        <p color="danger" [hidden]="!name.errors.required">Apellidos requerido.</p>
+                  </div>
+                  <ion-item>
+                        <ion-label floating>Nombre(s)</ion-label>
+                        <ion-input type="text" name="price" required  [(ngModel)]="miModelo.price"  ngModel #price="ngModel" required maxlength="45"></ion-input>
+                  </ion-item>
+                  <div class="form-error" *ngIf="price.errors && (price.dirty || price.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Nombre requerido.</p>
+                  </div>
+                  <ion-item>
+                        <ion-label>Sexo</ion-label>
+                        <ion-select name="sexo" required   ngModel #sexo="ngModel" required>
+                          <ion-option value="Femenino" required>Femenino</ion-option>
+                          <ion-option value="Masculino" required>Masculino</ion-option>
+                        </ion-select>
+                  </ion-item>
+                  <ion-item>
+                        <ion-label floating>Nacionalidad</ion-label>
+                        <ion-input type="text" name="nacionalidad" required [(ngModel)]="miModelo.nacionalidad"  ngModel #nacionalidad="ngModel"  required maxlength="35"></ion-input>
+                  </ion-item>
+                  <div class="form-error" *ngIf="nacionalidad.errors && (nacionalidad.dirty || nacionalidad.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Nacionalidad requerido.</p>
+                  </div>
+                  <ion-item>
+                        <ion-label floating>Lugar de nacimiento</ion-label>
+                        <ion-input type="text" name="lugarNacimiento" required [(ngModel)]="miModelo.lugarNacimiento"  ngModel #lugarNacimiento="ngModel"  required maxlength="35"></ion-input>
+                  </ion-item>
+                  <div class="form-error" *ngIf="lugarNacimiento.errors && (lugarNacimiento.dirty || lugarNacimiento.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Lugar de nacimiento requerido.</p>
+                  </div>
+                  <ion-item>
+                        <ion-label floating>Delegación o Municipio de nacimiento</ion-label>
+                        <ion-input type="text" name="nacimiento"  [(ngModel)]="miModelo.nacimiento"  ngModel #nacimiento="ngModel" required maxlength="45" ></ion-input>
+                  </ion-item>
+                  <div class="form-error" *ngIf="nacimiento.errors && (lugarNacimiento.dirty || nacimiento.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Delegación o Municipio de nacimiento requerido.</p>
+                  </div>
+                  <ion-item>
+                        <ion-label>Estado civil</ion-label>
+                        <ion-select name="estadoCivil" required  ngModel #estadoCivil="ngModel" required>
+                          <ion-option value="Soltero" required>Soltero</ion-option>
+                          <ion-option value="Casado" required>Casado</ion-option>
+                        </ion-select>
+                  </ion-item>
+                           
+                 
+                  <ion-item>  
+                 <ion-label >Fecha de Nacimiento</ion-label>
+                  </ion-item>
+                  <ion-card>
+                  <ion-toolbar darkergraytoolbar class="toolbarPlan">
+                     
+                       <ion-icon name="md-calendar"></ion-icon>
+                       <span ion-datepicker
+                        [(value)]="initDate"
+                        [disabledDates]="disabledDates"
+                        [localeStrings]="{
+                              monday: true,
+                              weekdays: ['Lun.', 'Mar.', 'Mié.', 'Jue.', 'Vie.', 'Sáb.', 'Dom.'],
+                              months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+                            }"
+                        clear
+                        class="ScheduleDate">
+                             <span  >{{initDate | date}}  </span>
+                       </span>
+                       <ion-input type="text" hidden   name="fechaN"  required ngModel #fechaN="ngModel"  value="{{initDate | date}}" ></ion-input>
+                       
+                  </ion-toolbar>
+            </ion-card>
+                  <ion-item>
+                        <ion-label floating>Ingresa tu CURP</ion-label>
+                        <ion-input type="text" name="curp" required  [(ngModel)]="miModelo.curp" ngModel #curp="ngModel"  required maxlength="18"></ion-input>  
+                  </ion-item>
+                  <div class="form-error" *ngIf="curp.errors && (curp.dirty || curp.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">La CURP es requerido.</p>
+                  </div>
+
+                  <ion-list radio-group name="mayorEdad" required  ngModel #mayorEdad="ngModel" >
+                          <ion-list-header>
+                            ERES MAYOR DE EDAD Y ERES TU PROPIO TUTOR 
+                            <br>
+                            (Anexar Documentación comprobatoria)
+                          </ion-list-header>
+                        
+                          <ion-item>
+                            <ion-label>SI</ion-label>
+                            <ion-radio value="SI"></ion-radio>
+                          </ion-item>
+                        
+                          <ion-item>
+                            <ion-label>NO</ion-label>
+                            <ion-radio value="NO"></ion-radio>
+                          </ion-item>
+                  </ion-list>
+                  <ion-item>
+                        <ion-label>
+                              DATOS DEL ALUMNO
+                        </ion-label>
+                  </ion-item>
+                  <ion-item>
+                        <ion-label floating>Código Postal</ion-label>
+                        <ion-input type="text" name="codPos" [(ngModel)]="miModelo.codPos"  ngModel #codPos="ngModel"  required maxlength="5"></ion-input>
+                  </ion-item>
+                  <div class="form-error" *ngIf="codPos.errors && (codPos.dirty || codPos.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Su código postal es requerido.</p>
+                  </div>
+                  <ion-item>
+                  <ion-label floating>Colonia</ion-label>
+                        <ion-input type="text" name="colonia" [(ngModel)]="miModelo.colonia"  ngModel #colonia="ngModel"  required maxlength="30"></ion-input>
+                  </ion-item>
+                  <div class="form-error" *ngIf="colonia.errors && (colonia.dirty || colonia.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Su colonia es requerido.</p>
+                  </div>
+                  <ion-item>
+                        <ion-label floating>Calle y Número</ion-label>
+                        <ion-input type="text" name="calle" [(ngModel)]="miModelo.calle"  ngModel #calle="ngModel" required maxlength="30"></ion-input>
+                  </ion-item>
+                  <div class="form-error" *ngIf="calle.errors && (calle.dirty || calle.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Su calle y número es requerido.</p>
+                  </div>
+                  <ion-item>
+                        <ion-label floating>Télefono celular del alumno</ion-label>
+                        <ion-input type="text" name="numcel" [(ngModel)]="miModelo.numcel"  ngModel #numcel="ngModel"  required maxlength="10"></ion-input>
+                  </ion-item>
+                  <div class="form-error" *ngIf="numcel.errors && (numcel.dirty || numcel.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Su número de télefono es requerido.</p>
+                  </div>
+                  <ion-item>
+                        <ion-label floating>Correo electrónico alumno</ion-label>
+                        <ion-input type="text" name="email" [(ngModel)]="miModelo.email" ngModel #email="ngModel"  required maxlength="30"></ion-input>
+                  </ion-item>
+                  <div class="form-error" *ngIf="email.errors && (email.dirty || email.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Su correo electrónico es requerido.</p>
+                  </div>
+                  <ion-item>
+                        <ion-label floating>Ciudad o estado</ion-label>
+                        <ion-input type="text" name="ciudad"  [(ngModel)]="miModelo.ciudad" ngModel #ciudad="ngModel"  required maxlength="35"></ion-input>
+                  </ion-item>
+                  <div class="form-error" *ngIf="ciudad.errors && (ciudad.dirty || ciudad.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Su ciudad es requerido.</p>
+                  </div>
+                  <ion-item>
+                        <ion-label floating>Tipo de sangre ejem. O+</ion-label>
+                        <ion-input type="text" name="tiposangre" [(ngModel)]="miModelo.tiposangre" ngModel #tiposangre="ngModel"  required maxlength="3"></ion-input>
+                  </ion-item>
+                  <div class="form-error" *ngIf="tiposangre.errors && (tiposangre.dirty || tiposangre.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Su tipo de sangre es requerido.</p>
+                  </div>
+                  <ion-item>
+                        <ion-label floating>Peso ejem. 30.34 g</ion-label>
+                        <ion-input type="text" name="peso" [(ngModel)]="miModelo.peso" ngModel #peso="ngModel"  required maxlength="6"></ion-input>
+                  </ion-item>
+                  <div class="form-error" *ngIf="peso.errors && (peso.dirty || peso.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Su peso es requerido.</p>
+                  </div>
+                  <ion-item>
+                        <ion-label floating>Altura ejem. 1.3 m</ion-label>
+                        <ion-input type="text" name="altura" [(ngModel)]="miModelo.altura" ngModel #altura="ngModel"  required maxlength="6"></ion-input>
+                  </ion-item>
+                  <div class="form-error" *ngIf="altura.errors && (altura.dirty || altura.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Su altura es requerido.</p>
+                  </div>
+                  <ion-item>
+                        <ion-label>DATOS DE SECUNDARIA DE EGRESO</ion-label>
+                  </ion-item>
+                  <ion-item>
+                        <ion-label>Tipo de secundaria de Egreso</ion-label>
+                        <ion-select name="tipoSecundaria" required  ngModel #tipoSecundaria="ngModel" required>
+                          <ion-option value="Pública" required>Pública</ion-option>
+                          <ion-option value="Privada" required>Privada</ion-option>
+                        </ion-select>
+                  </ion-item>
+                  <ion-item>
+                         <ion-label floating>Nombre de la Secundaria</ion-label>
+                         <ion-input type="text" name="nomsecund" [(ngModel)]="miModelo.nomsecund" ngModel #nomsecund="ngModel"   required maxlength="35"></ion-input>
+                  </ion-item>
+                  <div class="form-error" *ngIf="nomsecund.errors && (nomsecund.dirty || nomsecund.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">El nombre de secundaria es requerido.</p>
+                  </div>
+
+                  <ion-item>
+                        <ion-label floating>Delegación/municipio</ion-label>
+                        <ion-input type="text" name="delgamunEscuela" [(ngModel)]="miModelo.delgamunEscuela" ngModel #delgamunEscuela="ngModel"  required maxlength="45"></ion-input>
+                  </ion-item>
+
+                  <div class="form-error" *ngIf="delgamunEscuela.errors && (delgamunEscuela.dirty || delgamunEscuela.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Delegación/municipio de egreso es requerido.</p>
+                  </div>
+
+                       <ion-item>
+                              <ion-label floating>Año de egreso</ion-label>
+                              <ion-input type="text" name="anioEgreso" [(ngModel)]="miModelo.anioEgreso"  ngModel #anioEgreso="ngModel"  required maxlength="4"></ion-input>
+                       </ion-item>
+                       <div class="form-error" *ngIf="anioEgreso.errors && (anioEgreso.dirty || anioEgreso.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Su año de egreso es requerido.</p>
+                  </div>
+
+                       <ion-item>
+                              <ion-label floating>Promedio ejem. 9.8</ion-label>
+                              <ion-input type="text" name="promedio" [(ngModel)]="miModelo.promedio"  ngModel #promedio="ngModel"  required maxlength="3"></ion-input>
+                       </ion-item>
+                   <div class="form-error" *ngIf="promedio.errors && (promedio.dirty || promedio.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Su promedio es requerido.</p>
+                  </div>     
+
+                  <ion-item>
+                        <ion-label>Capacidades diferentes</ion-label>
+                        <ion-select name="capDif" required  ngModel #capDif="ngModel" required>
+                          <ion-option value="SI" required>SI</ion-option>
+                          <ion-option value="NO" required>NO</ion-option>
+                        </ion-select>
+                  </ion-item>
+                  <ion-item>
+                        <ion-label floating>Si tu respuesta es si, especifica cual</ion-label>
+                        <ion-input type="text" name="sicual" [(ngModel)]="miModelo.sicual"  ngModel #sicual="ngModel"  required maxlength="45"></ion-input>
+                 </ion-item>
+                 <div class="form-error" *ngIf="sicual.errors && (sicual.dirty || sicual.touched)">
+                        <p color="danger" [hidden]="!name.errors.required">Tu especificación es requerido.</p>
+            </div> 
+
+                <ion-item>
+                  <ion-label>Medicamento prescrito por enfermedad crónica <br>(Anexar documentación comprobatoria)</ion-label>
+                  <ion-select name="MedPres" required  ngModel #MedPres="ngModel" required>
+                    <ion-option value="SI" required>SI</ion-option>
+                    <ion-option value="NO" required>NO</ion-option>
+                  </ion-select>
+                  </ion-item>
+                  <ion-item>
+                  <ion-label>Habla alguna lengua indígena</ion-label>
+                  <ion-select name="lengua" required  ngModel #lengua="ngModel" required>
+                    <ion-option value="SI" required>SI</ion-option>
+                    <ion-option value="NO" required>NO</ion-option>
+                  </ion-select>
+                  </ion-item>
+                  <ion-item>
+                        <ion-label floating>Si tu respuesta es si, especifica cual</ion-label>
+                        <ion-input type="text" name="sicual1" [(ngModel)]="miModelo.sicual1"  ngModel #sicual1="ngModel"  required maxlength="45"></ion-input>
+                  </ion-item>
+                  <div class="form-error" *ngIf="sicual1.errors && (sicual1.dirty || sicual1.touched)">
+                              <p color="danger" [hidden]="!name.errors.required">Tu especificación es requerido.</p>
+                  </div> 
+                 <ion-item>
+                  <ion-label>DATOS DEL TUTOR</ion-label>
+                 </ion-item>
+                 <ion-item>
+                  <ion-label floating>Nombre del tutor</ion-label>
+                  <ion-input type="text" name="nomtutor"  [(ngModel)]="miModelo.nomtutor" ngModel #nomtutor="ngModel"  required maxlength="45"></ion-input>
+              </ion-item>
+              <div class="form-error" *ngIf="nomtutor.errors && (nomtutor.dirty || nomtutor.touched)">
+                        <p color="danger" [hidden]="!name.errors.required">El nombre del tutor es requerido.</p>
+            </div> 
+              
+                <ion-item>
+                    <ion-label floating>Numero teléfonico</ion-label>
+                    <ion-input type="text" name="numtel"  [(ngModel)]="miModelo.numtel" ngModel #numtel="ngModel"  required maxlength="10"></ion-input>
+               </ion-item>
+               <div class="form-error" *ngIf="numtel.errors && (numtel.dirty || numtel.touched)">
+                  <p color="danger" [hidden]="!name.errors.required">El número de télefono del tutor es requerido.</p>
+               </div> 
+                 <ion-item>
+                  <button ion-button full block color = "secondary" round >Enviar Datos</button>
+                  </ion-item>
+                 
+
+            </ion-list>     
+      </form>
+
+      
+     
+</ion-content>
+<ion-footer >
+            <ion-toolbar color="cetis-color">
+            </ion-toolbar>
+          </ion-footer>
